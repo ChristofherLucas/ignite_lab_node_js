@@ -1,14 +1,17 @@
-import { Content } from 'src/application/entities/content';
-import { Notification } from 'src/application/entities/notification';
-import { NotificationProps } from 'src/application/entities/notification';
+import { Content } from '@application/entities/content';
+import {
+  Notification,
+  NotificationProps,
+} from '@application/entities/notification';
+import { randomUUID } from 'node:crypto';
 
 type Override = Partial<NotificationProps>;
 
 export function makeNotification(override: Override = {}) {
   return new Notification({
     category: 'social',
-    content: new Content('nova solicitação'),
-    recipientId: '2',
+    content: new Content('Create a new notification'),
+    recipientId: randomUUID(),
     ...override,
   });
 }
